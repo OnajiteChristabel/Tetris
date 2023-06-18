@@ -1,0 +1,75 @@
+  html, body {
+
+    height: 100%;
+
+    margin: 0;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+
+  body {
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 100px;
+
+  }
+
+  canvas {
+
+    border: 1px solid white;
+
+    background-color: rgb(235, 232, 232);
+
+    height: 80%;
+
+    width: 35%;
+
+    border-radius: 1.5%;
+
+  }
+
+  .score{
+
+    display: flex;
+
+    flex-direction: column-reverse;
+
+    width: 30%;
+
+    padding: 10px;
+
+    border: 2px solid black;
+
+    border-radius: 10px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+  }
+
+  button{
+
+    display: block;
+
+    width: 50%;
+
+    padding: 10px 0;
+
+  }
+
+  .score>p{
+
+    order: 1;
+
+  }
