@@ -5,6 +5,22 @@ Rbtn.addEventListener('click',()=>{
     window.location.reload()
 
 })
+let score = 0;
+let paused = false;
+
+function loop() {
+  if (paused) {
+    // Pause the game loop
+    rAF = requestAnimationFrame(loop);
+    return;
+  }
+}
+
+// Create an Audio object for the song
+const song = new Audio('song.mp3');
+
+// Play the song
+song.play();
 
 function getRandomInt(min, max) {
 
@@ -72,13 +88,8 @@ function getNextTetromino() {
 
 }
 
-function PauseGame(tetrominos){
-
-}
 
 // rotate an NxN matrix 90deg
-
-// @see https://codereview.stackexchange.com/a/186834
 
 function rotate(matrix) {
 
@@ -147,12 +158,28 @@ function placeTetromino() {
         }
 
         playfield[tetromino.row + row][tetromino.col + col] = tetromino.name;
-
       }
-
     }
-
   }
+  let clearedLines = 0;
+
+  // check for line clears starting from the bottom and working our way up
+  for (let row = playfield.length - 1; row >= 0; row--) {
+    if (playfield[row].every((cell) => !!cell)) {
+      // drop every row above this one
+      for (let r = row; r >= 0; r--) {
+        for (let c = 0; c < playfield[r].length; c++) {
+          playfield[r][c] = playfield[r - 1][c];
+        }
+      }
+      clearedLines++;
+    }
+  }
+
+  // Increase the score based on the number of cleared lines
+  score += clearedLines * 100;
+  document.querySelector("#score").textContent = score;
+  tetromino = getNextTetromino();
 
   // check for line clears starting from the bottom and working our way up
 
@@ -434,7 +461,15 @@ function loop() {
 
 document.addEventListener("keydown", function (e) {
 
-  if (gameOver) return;
+  if (e.which === 32) {
+    paused = !paused;
+
+    if (paused) {
+      cancelAnimationFrame(rAF); // Pause the game loop
+    } else {
+      loop(); // Resume the game loop
+    }
+  }
 
   // left and right arrow keys (move)
 

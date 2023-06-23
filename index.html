@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tetris Game</title>
+
+  <style>
+    body {
+      background-color: rgba(242, 242, 242, 0.337);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .intro-container {
+        text-align: center;
+    }
+    .image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image-container img {
+        margin-right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-container">
+    <div class="image-container">
+        <img src="images/img2.png" alt="Tetris Image">
+        <img src="images/img1.png" alt="Tetris Image">
+    </div>
+    <h1>Welcome to Tetris!</h1>
+    <p>A classical puzzle.. Beat your highscores</p>
+    <p>Instructions: Scores increases with each line eliminated.. You can pause and restart at any time...</p>
+    <button id="start-button">Start Game</button>
+  </div>
+
+  <!-- Add any additional scripts or libraries needed for the introductory page -->
+  <script src="intro.js"></script>
+</body>
+</html>
